@@ -1,0 +1,76 @@
+doctype html
+html
+  head
+    title Editar Curso
+    style.
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('https://e1.pxfuel.com/desktop-wallpaper/801/529/desktop-wallpaper-purple-bubbles.jpg'); /* Ruta de tu imagen de fondo */
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      form {
+        background-color: rgba(173, 216, 230, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 400px;
+        width: 100%;
+      }
+      label, input, select {
+        display: block;
+        margin-bottom: 10px;
+        width: calc(100% - 20px);
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      label {
+        font-weight: bold;
+      }
+      button {
+        width: calc(50% - 5px);
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      button[type="submit"] {
+        background-color: #388e3c;
+      }
+      button[type="button"] {
+        background-color: #1e6091;
+      }
+  body
+    header
+    form(action=`/actualizar/curso/${curso.id}` method="POST")
+      h1(style="margin-top: 0;") Editar Curso
+      label(for="nombre") Nombre:
+      input(type="text" name="nombre" value=curso.nombre_curso required)
+      small.error-message#nombreError(style="color: red; display: none;")
+      br
+      label(for="duracion") Duración:
+      input(type="number" name="duracion" value=curso.duracion required)
+      small.error-message#duracionError(style="color: red; display: none;")
+      br
+      label(for="aula") Aula:
+      input(type="text" name="aula" value=curso.aula required)
+      small.error-message#aulaError(style="color: red; display: none;")
+      br
+      label(for="idProfesor") Profesores:
+      input(type="text", name="profesor", value=curso.nombre) 
+      small.error-message#cursoError(style="color: red; display: none;")
+      br
+      button(type="submit") Actualizar
+      button(type="button", onclick="location.href='/curso'", class="back-button") Volver

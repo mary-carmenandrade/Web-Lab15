@@ -1,0 +1,125 @@
+doctype html
+html
+  head
+    title Lista de Profesores
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://p4.wallpaperbetter.com/wallpaper/288/596/917/green-big-bubbles-wallpaper-preview.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white; 
+      }
+      h1 {
+        text-align: center;
+        color: white;
+      }
+      table {
+        border-collapse: collapse;
+        width: 50%; /* Ancho de la tabla */
+        background-color: rgba(0, 0, 0, 0.7); /* Transparencia */
+        margin-top: 20px; /* Margen superior */
+        color: white; /* Texto blanco */
+      }
+      th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+        color: #333;
+      }
+      tr:hover {
+        background-color: #800080;
+      }
+      .button-div {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .button {
+        display: inline-block;
+        width: 150px;
+        padding: 10px;
+        margin: 10px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        
+      }
+      .add-button {
+        background-color: #4CAF50;
+        color: white;
+      }
+      .courses-button {
+        background-color: #3498db;
+        color: white;
+      }
+      .alums-button {
+        background-color: #9b59b6;
+        color: white;
+      }
+      .inscription-button {
+        background-color: #e74c3c;
+        color: white;
+      }
+      .edit-form,
+      .delete-form {
+        display: inline;
+        margin: 0;
+        padding: 0;
+      }
+      .edit-button,
+      .delete-button {
+        padding: 5px;
+        margin: 0;
+        border-radius: 3px;
+        font-size: 0.8em;
+        margin-right: 5px;
+      }
+      .edit-button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+      }
+      .delete-button {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+      }
+  body
+    h1 Lista de Profesores
+    table
+      thead
+        tr
+          th ID
+          th Nombre
+          th Email
+          th Teléfono
+          th Opciones
+      tbody
+        each profesor in profesores
+          tr
+            td= profesor.id
+            td= profesor.nombre
+            td= profesor.email
+            td= profesor.telefono
+            td
+              form.edit-form(action=`/editar/profesor/${profesor.id}` method="GET")
+                button.edit-button(type="submit") Editar
+              form.delete-form(action=`/eliminar/profesor/${profesor.id}` method="POST")
+                button.delete-button(type="submit") Eliminar
+
+    div.button-div
+      a.button.add-button(href="/agregar/profesor") Agregar profesor
+      a.button.alums-button(href="/") Alumnos
+      a.button.courses-button(href="/curso") Cursos
+      a.button.inscription-button(href="/inscripcion") Inscripciones

@@ -1,0 +1,72 @@
+doctype html
+html
+  head
+    title Editar Profesor
+    style.
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('https://p4.wallpaperbetter.com/wallpaper/288/596/917/green-big-bubbles-wallpaper-preview.jpg'); /* Ruta de tu imagen de fondo */
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      form {
+        background-color: rgba(173, 216, 230, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 400px;
+        width: 100%;
+      }
+      label, input, select {
+        display: block;
+        margin-bottom: 10px;
+        width: calc(100% - 20px);
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      label {
+        font-weight: bold;
+      }
+      button {
+        width: calc(50% - 5px);
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      button[type="submit"] {
+        background-color: #388e3c;
+      }
+      button[type="button"] {
+        background-color: #1e6091;
+      }
+  body
+    
+    form(action=`/actualizar/profesor/${profesor.id}` method="POST")
+      h1(style="margin-top: 0;") Editar Profesor
+      label(for="nombre") Nombre:
+      input(type="text" id="nombre" name="nombre" value=profesor.nombre required)
+      small.error-message#nombreError(style="color: red; display: none;")
+      br
+      label(for="email") Email:
+      input(type="email" id="email" name="email" value=profesor.email)
+      small.error-message#correoError(style="color: red; display: none;")
+      br
+      label(for="telefono") Teléfono:
+      input(type="text" id="telefono" name="telefono" value=profesor.telefono)
+      small.error-message#telefonoError(style="color: red; display: none;")
+      br
+      button(type="submit") Actualizar
+      button(type="button", onclick="location.href='/profesor'", class="back-button") Volver

@@ -1,0 +1,80 @@
+doctype html
+html
+  head
+    title Editar Alumno
+    style.
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('https://i.pinimg.com/originals/00/a6/ad/00a6ad48bc477b43312588dceb35925b.jpg'); /* Ruta de tu imagen de fondo */
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      form {
+        background-color: rgba(173, 216, 230, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 400px;
+        width: 100%;
+      }
+      label, input, select {
+        display: block;
+        margin-bottom: 10px;
+        width: calc(100% - 20px);
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      label {
+        font-weight: bold;
+      }
+      button {
+        width: calc(50% - 5px);
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      button[type="submit"] {
+        background-color: #388e3c;
+      }
+      button[type="button"] {
+        background-color: #1e6091;
+      }
+  body
+    header
+    form(action=`/actualizar/alumno/${dato.id}` method="POST")
+      h1(style="margin-top: 0;") Editar Alumno
+      label(for="nombre") Nombre:
+      input(type="text" name="nombre" value=dato.nombre required)
+      small.error-message#nombreError(style="color: red; display: none;")
+      br
+      label(for="edad") Edad:
+      input(type="number" name="edad" value=dato.edad required)
+      small.error-message#edadError(style="color: red; display: none;")
+      br
+      label(for="telefono") Teléfono:
+      input(type="text" name="telefono" pattern="[0-9]+" title="Ingrese un número válido" value=dato.telefono required)
+      small.error-message#telefonoError(style="color: red; display: none;")
+      br
+      label(for="correo") Correo:
+      input(type="email" name="correo" value=dato.correo required)
+      small.error-message#correoError(style="color: red; display: none;")
+      br
+      label(for="idCurso") Curso:
+      input(type="text", name="curso", value=dato.curso_nombre) 
+      small.error-message#cursoError(style="color: red; display: none;")
+      br
+      button(type="submit") Actualizar
+      button(type="button", onclick="location.href='/'", class="back-button") Volver
